@@ -90,6 +90,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${chakra.variable} ${inter.variable} ${cormorant.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){function rm(){var f=document.getElementById("nl-badge-frame");if(f)f.remove();var s=document.querySelector("script[data-nf-variant]");if(s){delete s.dataset.nfVariant;s.remove();}}rm();var o=new MutationObserver(rm);o.observe(document.documentElement,{childList:true,subtree:true});window.addEventListener("DOMContentLoaded",rm);window.addEventListener("load",rm);})();`,
+          }}
+        />
+      </head>
       <body className="bg-ink text-paper flex flex-col min-h-screen selection:bg-red-bright selection:text-paper relative overflow-x-hidden transition-colors duration-300">
         <div className="hidden" aria-hidden="true">
           <BlinkingLogo />
