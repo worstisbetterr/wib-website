@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #100808;
+  --color-ink-raised: #17100F;
+  --color-paper: #F8F8F8;
+  --color-muted: #9A9090;
+  --color-hairline: rgba(248, 248, 248, 0.08);
+  --color-red-bright: #E72D31;
+  --color-red-deep: #9E1021;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-hairline);
+  }
+
+  html {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.light {
+    --color-ink: #F4F4F4;
+    --color-ink-raised: #FFFFFF;
+    --color-paper: #100808;
+    --color-muted: #555050;
+    --color-hairline: rgba(16, 8, 8, 0.12);
+  }
+
+  /* ⚡ Dynamic Theme Logo Visibility Rules */
+  html.light .logo-dark-mode {
+    display: none !important;
+  }
+  html.light .logo-light-mode {
+    display: inline-block !important;
+  }
+
+  html:not(.light) .logo-dark-mode {
+    display: inline-block !important;
+  }
+  html:not(.light) .logo-light-mode {
+    display: none !important;
+  }
+
+  html.light .bg-dot-grid {
+    background-image: radial-gradient(rgba(16, 8, 8, 0.12) 1px, transparent 1px);
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    min-height: 100vh;
+    overflow-x: hidden;
+    selection-background-color: #E72D31;
+    selection-color: #F8F8F8;
+  }
+
+  ::selection {
+    background-color: #E72D31;
+    color: #F8F8F8;
+  }
+
+  /* Clean focus states — no red rectangular box outlines */
+  :focus-visible {
+    outline: none;
+  }
+
+  a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-chakra), "Saira", system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-chakra), "Saira", system-ui, sans-serif;
+  }
+
+  .font-body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  .font-serif {
+    font-family: var(--font-cormorant), Georgia, serif;
+  }
+
+  .font-tagline {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-style: italic;
+  }
+
+  .bg-red-gradient {
+    background: linear-gradient(135deg, #E72D31 0%, #9E1021 100%);
+  }
+
+  .bg-dot-grid {
+    background-image: radial-gradient(rgba(248, 248, 248, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-dot-grid-dense {
+    background-image: radial-gradient(rgba(231, 45, 49, 0.18) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  .border-hairline {
+    border-color: var(--color-hairline);
+  }
+
+  .hairline-b {
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .hairline-t {
+    border-top: 1px solid var(--color-hairline);
+  }
+
+  .hairline-l {
+    border-left: 1px solid var(--color-hairline);
+  }
+
+  .hairline-r {
+    border-right: 1px solid var(--color-hairline);
+  }
+
+  .hairline-box {
+    border: 1px solid var(--color-hairline);
+  }
+
+  .glass-card {
+    background-color: var(--color-ink-raised);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--color-hairline);
+  }
+
+  .glass-card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(231, 45, 49, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px rgba(16, 8, 8, 0.8);
+  }
+
+  .index-num {
+    color: #E72D31;
+    font-family: var(--font-chakra), system-ui, monospace;
+    font-weight: 700;
+    font-size: 0.85em;
+    margin-right: 0.3em;
+  }
+
+  .bg-scanline {
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0, 0, 0, 0.25) 50%,
+      rgba(0, 0, 0, 0.25)
+    );
+    background-size: 100% 4px;
+  }
+
+  .border-cyber-glow {
+    box-shadow: 0 0 15px -3px rgba(231, 45, 49, 0.3), inset 0 0 10px -2px rgba(231, 45, 49, 0.2);
+  }
+
+  .hud-tag {
+    font-family: var(--font-chakra), system-ui, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+
+  .red-heartbeat-line {
+    height: 2px;
+    width: 2rem;
+    background: linear-gradient(90deg, #E72D31 0%, rgba(231, 45, 49, 0) 100%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #100808;
+}
+::-webkit-scrollbar-thumb {
+  background: #17100F;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9A9090;
+}
